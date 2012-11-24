@@ -5,6 +5,7 @@ namespace SxCmm\Service;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\View\Model\ViewModel;
+use Locale;
 
 /**
  * @todo allow for components to be services
@@ -35,6 +36,13 @@ class ContentManager implements ServiceLocatorAwareInterface
      * @var ComponentManager
      */
     protected $componentManager;
+
+    /**
+     * Locale to use instead of the default.
+     *
+     * @var string
+     */
+    protected $locale;
 
     /**
      * Construct the ContentManager
@@ -106,6 +114,33 @@ class ContentManager implements ServiceLocatorAwareInterface
     }
 
     /**
+     * Set locale to use instead of the default.
+     *
+     * @param  string $locale
+     *
+     * @return ContentArea
+     */
+    public function setlocale($locale)
+    {
+        $this->locale = (string) $locale;
+        return $this;
+    }
+
+    /**
+     * Get the locale to use.
+     *
+     * @return string|null
+     */
+    public function getlocale()
+    {
+        if ($this->locale === null) {
+            $this->locale = Locale::getDefault();
+        }
+
+        return $this->locale;
+    }
+
+    /**
      * Get the component mapper
      *
      * @return SxCmm\Mapper\Component
@@ -131,7 +166,7 @@ class ContentManager implements ServiceLocatorAwareInterface
 
     /**
      * Set the component manager
-     * 
+     *
      * @param \SxCmm\Service\ComponentManager $componentManager
      */
     public function setComponentManager(ComponentManager $componentManager)

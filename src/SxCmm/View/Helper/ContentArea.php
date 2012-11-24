@@ -4,7 +4,8 @@ namespace SxCmm\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
-use \Zend\ServiceManager\ServiceLocatorInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
+use Locale;
 
 class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
 {
@@ -27,6 +28,13 @@ class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
      * @var SxCmm\Service\ContentManager
      */
     protected $contentManager;
+
+    /**
+     * Locale to use instead of the default.
+     *
+     * @var string
+     */
+    protected $locale;
 
 
     /**
@@ -56,6 +64,33 @@ class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
     public function __toString()
     {
         return $this->render();
+    }
+
+    /**
+     * Set locale to use instead of the default.
+     *
+     * @param  string $locale
+     *
+     * @return ContentArea
+     */
+    public function setlocale($locale)
+    {
+        $this->locale = (string) $locale;
+        return $this;
+    }
+
+    /**
+     * Get the locale to use.
+     *
+     * @return string|null
+     */
+    public function getlocale()
+    {
+        if ($this->locale === null) {
+            $this->locale = Locale::getDefault();
+        }
+
+        return $this->locale;
     }
 
     /**

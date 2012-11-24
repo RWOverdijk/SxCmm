@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\Entity
  *  @ORM\Table(
  *      name="component_setting",
- *      uniqueConstraints={@ORM\UniqueConstraint(name="setting_unique",columns={"component_id", "setting_key"})},
+ *      uniqueConstraints={@ORM\UniqueConstraint(name="setting_unique",columns={"component_id", "setting_key", "locale"})},
  *      indexes={
  *          @ORM\index(name="key_idx", columns={"setting_key"})
  *      }
@@ -28,6 +28,12 @@ class ComponentSetting
      * @var string
      */
     protected $setting_key;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     * @var string
+     */
+    protected $locale = 'fallback';
 
     /**
      * @ORM\Column(type="text")
