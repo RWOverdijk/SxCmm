@@ -6,6 +6,15 @@ use Doctrine\ORM\EntityRepository;
 
 class Component extends EntityRepository
 {
+    /**
+     * Find components.
+     *
+     * @param   string  $area
+     * @param   string  $pageId
+     * @param   string  $locale
+     *
+     * @return array
+     */
     public function findComponents($area, $pageId, $locale = null)
     {
         $builder = $this->getEntityManager()->createQueryBuilder();

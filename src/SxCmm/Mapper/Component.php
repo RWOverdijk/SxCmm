@@ -17,6 +17,12 @@ class Component extends AbstractMapper
 
     /**
      * Find components for area $area on page $pageId
+     *
+     * @param   string  $area
+     * @param   string  $pageId
+     * @param   string  $locale
+     *
+     * @return array
      */
     public function findByAreaAndPage($area, $pageId, $locale = null)
     {
