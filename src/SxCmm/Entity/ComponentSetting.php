@@ -7,9 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\Entity
  *  @ORM\Table(
  *      name="component_setting",
- *      uniqueConstraints={@ORM\UniqueConstraint(name="setting_unique",columns={"component_id", "setting_key"})},
+ *      uniqueConstraints={@ORM\UniqueConstraint(name="setting_unique",columns={"component_id", "setting_key", "locale"})},
  *      indexes={
- *          @ORM\index(name="key_idx", columns={"setting_key"})
+ *          @ORM\index(name="setting_key_idx", columns={"setting_key"}),
+ *          @ORM\index(name="locale_idx", columns={"locale"})
  *      }
  *  )
  */
@@ -28,6 +29,12 @@ class ComponentSetting
      * @var string
      */
     protected $setting_key;
+
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     * @var string
+     */
+    protected $locale;
 
     /**
      * @ORM\Column(type="text")
