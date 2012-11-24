@@ -18,12 +18,9 @@ class Component extends AbstractMapper
     /**
      * Find components for area $area on page $pageId
      */
-    public function findByAreaAndPage($area, $pageId)
+    public function findByAreaAndPage($area, $pageId, $locale = null)
     {
-        return  $this->getRepository()->findBy(array(
-            'page_id'   => $pageId,
-            'area'      => $area,
-        ), array('position' => 'asc'));
+        return $this->getRepository()->findComponents($area, $pageId, $locale);
     }
 
     /**

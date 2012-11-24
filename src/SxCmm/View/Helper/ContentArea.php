@@ -29,13 +29,6 @@ class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
      */
     protected $contentManager;
 
-    /**
-     * Locale to use instead of the default.
-     *
-     * @var string
-     */
-    protected $locale;
-
 
     /**
      * Invoke the contentarea view helper.
@@ -75,7 +68,8 @@ class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
      */
     public function setlocale($locale)
     {
-        $this->locale = (string) $locale;
+        $this->getContentManager()->setLocale($locale);
+
         return $this;
     }
 
@@ -86,11 +80,7 @@ class ContentArea extends AbstractHelper implements ServiceLocatorAwareInterface
      */
     public function getlocale()
     {
-        if ($this->locale === null) {
-            $this->locale = Locale::getDefault();
-        }
-
-        return $this->locale;
+        $this->getContentManager()->getLocale();
     }
 
     /**

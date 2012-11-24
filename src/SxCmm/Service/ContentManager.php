@@ -79,7 +79,7 @@ class ContentManager implements ServiceLocatorAwareInterface
 
         $viewModel->setTemplate('component/area');
 
-        $components = $this->getComponentMapper()->findByAreaAndPage($area, $page);
+        $components = $this->getComponentMapper()->findByAreaAndPage($area, $page, $this->getlocale());
 
         if (empty($components)) {
             return $viewModel;
@@ -123,6 +123,7 @@ class ContentManager implements ServiceLocatorAwareInterface
     public function setlocale($locale)
     {
         $this->locale = (string) $locale;
+        
         return $this;
     }
 

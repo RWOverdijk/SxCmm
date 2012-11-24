@@ -4,7 +4,7 @@ namespace SxCmm\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- *  @ORM\Entity
+ *  @ORM\Entity(repositoryClass="SxCmm\Repository\Component")
  *  @ORM\Table(
  *      name="component",
  *      indexes={
