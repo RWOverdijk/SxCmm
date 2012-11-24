@@ -1,0 +1,9 @@
+<div class="contentarea" data-area="<?php echo $this->areaName;?>">
+<?php
+    if (!empty($this->components)) {
+        foreach($this->components as $component) {
+            echo $this->render($component);
+        };
+    }
+?>
+</div>
