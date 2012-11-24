@@ -33,7 +33,7 @@ class ComponentSetting
      * @ORM\Column(type="string", length=30)
      * @var string
      */
-    protected $locale = 'fallback';
+    protected $locale;
 
     /**
      * @ORM\Column(type="text")
